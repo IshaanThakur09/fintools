@@ -1,20 +1,20 @@
 :root {
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-tertiary: #334155;
+    --bg-primary: #0a0710;
+    --bg-secondary: #17132a;
+    --bg-tertiary: #231d3f;
     
-    --accent: #3b82f6;
-    --accent-hover: #2563eb;
-    --accent-light: rgba(59, 130, 246, 0.2);
+    --accent: #9f5bff;
+    --accent-hover: #b07cff;
+    --accent-light: rgba(159, 91, 255, 0.2);
     
-    --chart-1: #3b82f6;
-    --chart-2: #10b981;
+    --chart-1: #9f5bff;
+    --chart-2: #e394e8;
     
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
+    --text-main: #ffffff;
+    --text-muted: #a5a0b7;
     
-    --border: #334155;
-    --border-light: rgba(255, 255, 255, 0.1);
+    --border: #2e274d;
+    --border-light: rgba(255, 255, 255, 0.05);
     
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
@@ -50,7 +50,7 @@ body {
 
 /* Header */
 .header {
-    background-color: rgba(15, 23, 42, 0.8);
+    background-color: rgba(10, 7, 16, 0.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-light);
     position: sticky;
@@ -81,11 +81,14 @@ nav a {
     text-decoration: none;
     margin-left: 2rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
 }
 
-nav a:hover {
+nav a:hover, nav a.active {
     color: var(--text-main);
+    border-bottom: 2px solid var(--accent);
 }
 
 /* Main Layout */
@@ -354,6 +357,10 @@ input[type="number"]::-webkit-inner-spin-button {
     color: var(--text-main) !important;
     font-weight: 600;
     margin-left: 0 !important;
+}
+
+.total-row strong {
+    color: var(--accent);
 }
 
 /* Dots */

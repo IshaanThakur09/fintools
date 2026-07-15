@@ -28,9 +28,9 @@ const updateCurrencySymbols = () => {
 
 // Colors matching CSS variables
 const COLORS = {
-    chart1: '#3b82f6',
-    chart2: '#10b981',
-    bgSecondary: '#1e293b'
+    chart1: '#9f5bff',
+    chart2: '#e394e8',
+    bgSecondary: '#17132a'
 };
 
 // Common Chart Config
