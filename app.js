@@ -18,16 +18,12 @@ const formatCurrency = (value) => {
 };
 
 const updateCurrencySymbols = () => {
-    const symbols = document.querySelectorAll('.currency-symbol');
-    let sym = '₹';
-    if (currentCurrency === 'USD') sym = '$';
-    else if (currentCurrency === 'EUR') sym = '€';
-    else if (currentCurrency === 'GBP') sym = '£';
-    else if (currentCurrency === 'JPY') sym = '¥';
-    else if (currentCurrency === 'AUD') sym = 'A$';
-    else if (currentCurrency === 'CAD') sym = 'C$';
-    
-    symbols.forEach(el => el.textContent = sym);
+    // We don't have static text symbols anymore, they are native <select> elements.
+    // So we just update the selected value of all select elements to match currentCurrency.
+    const selects = document.querySelectorAll('.currency-selector');
+    selects.forEach(select => {
+        select.value = currentCurrency;
+    });
 };
 
 // Colors matching CSS variables
@@ -238,13 +234,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcEmi = initEmiCalculator();
     const calcSip = initSipCalculator();
 
-    const currencySelect = document.getElementById('currency-selector');
-    if(currencySelect) {
-        currencySelect.addEventListener('change', (e) => {
+    const currencySelects = document.querySelectorAll('.currency-selector');
+    currencySelects.forEach(select => {
+        select.addEventListener('change', (e) => {
             currentCurrency = e.target.value;
             updateCurrencySymbols();
             calcEmi();
             calcSip();
         });
-    }
+    });
 });

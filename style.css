@@ -88,25 +88,6 @@ nav a:hover {
     color: var(--text-main);
 }
 
-.currency-selector {
-    margin-left: 2rem;
-    background-color: var(--bg-tertiary);
-    color: var(--text-main);
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.8rem;
-    border-radius: var(--radius-md);
-    font-family: inherit;
-    font-weight: 500;
-    font-size: 0.9rem;
-    outline: none;
-    cursor: pointer;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.currency-selector:focus, .currency-selector:hover {
-    border-color: var(--accent);
-}
-
 /* Main Layout */
 main {
     padding: 4rem 0;
@@ -190,6 +171,31 @@ main {
 .input-value-wrapper:focus-within {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.input-currency {
+    background: var(--bg-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    outline: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-currency:hover, .input-currency:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-light);
+}
+
+.input-currency option {
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
 }
 
 .currency-symbol, .percent-symbol, .unit-symbol {

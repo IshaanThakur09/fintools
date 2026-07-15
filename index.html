@@ -16,15 +16,6 @@
             <nav>
                 <a href="#emi">EMI Calculator</a>
                 <a href="#sip">SIP Calculator</a>
-                <select id="currency-selector" class="currency-selector">
-                    <option value="INR" selected>₹ INR</option>
-                    <option value="USD">$ USD</option>
-                    <option value="EUR">€ EUR</option>
-                    <option value="GBP">£ GBP</option>
-                    <option value="JPY">¥ JPY</option>
-                    <option value="AUD">A$ AUD</option>
-                    <option value="CAD">C$ CAD</option>
-                </select>
             </nav>
         </div>
     </header>
@@ -43,7 +34,42 @@
                         <div class="input-header">
                             <label for="emi-principal">Loan Amount</label>
                             <div class="input-value-wrapper">
-                                <span class="currency-symbol">₹</span>
+                                <select class="currency-selector input-currency">
+                                    <option value="INR" selected>INR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="JPY">JPY</option>
+                                    <option value="AUD">AUD</option>
+                                    <option value="CAD">CAD</option>
+                                    <option value="CHF">CHF</option>
+                                    <option value="CNY">CNY</option>
+                                    <option value="SEK">SEK</option>
+                                    <option value="NZD">NZD</option>
+                                    <option value="MXN">MXN</option>
+                                    <option value="SGD">SGD</option>
+                                    <option value="HKD">HKD</option>
+                                    <option value="NOK">NOK</option>
+                                    <option value="KRW">KRW</option>
+                                    <option value="TRY">TRY</option>
+                                    <option value="RUB">RUB</option>
+                                    <option value="BRL">BRL</option>
+                                    <option value="ZAR">ZAR</option>
+                                    <option value="AED">AED</option>
+                                    <option value="SAR">SAR</option>
+                                    <option value="THB">THB</option>
+                                    <option value="IDR">IDR</option>
+                                    <option value="MYR">MYR</option>
+                                    <option value="PHP">PHP</option>
+                                    <option value="VND">VND</option>
+                                    <option value="PLN">PLN</option>
+                                    <option value="ARS">ARS</option>
+                                    <option value="CLP">CLP</option>
+                                    <option value="COP">COP</option>
+                                    <option value="EGP">EGP</option>
+                                    <option value="NGN">NGN</option>
+                                    <option value="KES">KES</option>
+                                </select>
                                 <input type="number" id="emi-principal-input" value="100000" min="1000" max="1000000" step="1000">
                             </div>
                         </div>
@@ -114,7 +140,42 @@
                         <div class="input-header">
                             <label for="sip-monthly">Monthly Investment</label>
                             <div class="input-value-wrapper">
-                                <span class="currency-symbol">₹</span>
+                                <select class="currency-selector input-currency">
+                                    <option value="INR" selected>INR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="JPY">JPY</option>
+                                    <option value="AUD">AUD</option>
+                                    <option value="CAD">CAD</option>
+                                    <option value="CHF">CHF</option>
+                                    <option value="CNY">CNY</option>
+                                    <option value="SEK">SEK</option>
+                                    <option value="NZD">NZD</option>
+                                    <option value="MXN">MXN</option>
+                                    <option value="SGD">SGD</option>
+                                    <option value="HKD">HKD</option>
+                                    <option value="NOK">NOK</option>
+                                    <option value="KRW">KRW</option>
+                                    <option value="TRY">TRY</option>
+                                    <option value="RUB">RUB</option>
+                                    <option value="BRL">BRL</option>
+                                    <option value="ZAR">ZAR</option>
+                                    <option value="AED">AED</option>
+                                    <option value="SAR">SAR</option>
+                                    <option value="THB">THB</option>
+                                    <option value="IDR">IDR</option>
+                                    <option value="MYR">MYR</option>
+                                    <option value="PHP">PHP</option>
+                                    <option value="VND">VND</option>
+                                    <option value="PLN">PLN</option>
+                                    <option value="ARS">ARS</option>
+                                    <option value="CLP">CLP</option>
+                                    <option value="COP">COP</option>
+                                    <option value="EGP">EGP</option>
+                                    <option value="NGN">NGN</option>
+                                    <option value="KES">KES</option>
+                                </select>
                                 <input type="number" id="sip-monthly-input" value="500" min="50" max="10000" step="50">
                             </div>
                         </div>
@@ -172,6 +233,9 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 FinTools. Premium Financial Calculators.</p>
+            <div class="footer-links" style="margin-top: 1rem;">
+                <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
+            </div>
         </div>
     </footer>
 
