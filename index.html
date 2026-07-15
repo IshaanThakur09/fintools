@@ -16,6 +16,15 @@
             <nav>
                 <a href="#emi">EMI Calculator</a>
                 <a href="#sip">SIP Calculator</a>
+                <select id="currency-selector" class="currency-selector">
+                    <option value="INR" selected>₹ INR</option>
+                    <option value="USD">$ USD</option>
+                    <option value="EUR">€ EUR</option>
+                    <option value="GBP">£ GBP</option>
+                    <option value="JPY">¥ JPY</option>
+                    <option value="AUD">A$ AUD</option>
+                    <option value="CAD">C$ CAD</option>
+                </select>
             </nav>
         </div>
     </header>
@@ -34,7 +43,7 @@
                         <div class="input-header">
                             <label for="emi-principal">Loan Amount</label>
                             <div class="input-value-wrapper">
-                                <span class="currency-symbol">$</span>
+                                <span class="currency-symbol">₹</span>
                                 <input type="number" id="emi-principal-input" value="100000" min="1000" max="1000000" step="1000">
                             </div>
                         </div>
@@ -105,7 +114,7 @@
                         <div class="input-header">
                             <label for="sip-monthly">Monthly Investment</label>
                             <div class="input-value-wrapper">
-                                <span class="currency-symbol">$</span>
+                                <span class="currency-symbol">₹</span>
                                 <input type="number" id="sip-monthly-input" value="500" min="50" max="10000" step="50">
                             </div>
                         </div>

@@ -1,10 +1,33 @@
+let currentCurrency = 'INR';
+
 // --- Utilities ---
 const formatCurrency = (value) => {
-    return new Intl.NumberFormat('en-US', {
+    let locale = 'en-US';
+    if(currentCurrency === 'INR') locale = 'en-IN';
+    else if(currentCurrency === 'EUR') locale = 'en-IE';
+    else if(currentCurrency === 'GBP') locale = 'en-GB';
+    else if(currentCurrency === 'JPY') locale = 'ja-JP';
+    else if(currentCurrency === 'AUD') locale = 'en-AU';
+    else if(currentCurrency === 'CAD') locale = 'en-CA';
+
+    return new Intl.NumberFormat(locale, {
         style: 'currency',
-        currency: 'USD',
+        currency: currentCurrency,
         maximumFractionDigits: 0
     }).format(value);
+};
+
+const updateCurrencySymbols = () => {
+    const symbols = document.querySelectorAll('.currency-symbol');
+    let sym = '₹';
+    if (currentCurrency === 'USD') sym = '$';
+    else if (currentCurrency === 'EUR') sym = '€';
+    else if (currentCurrency === 'GBP') sym = '£';
+    else if (currentCurrency === 'JPY') sym = '¥';
+    else if (currentCurrency === 'AUD') sym = 'A$';
+    else if (currentCurrency === 'CAD') sym = 'C$';
+    
+    symbols.forEach(el => el.textContent = sym);
 };
 
 // Colors matching CSS variables
@@ -128,6 +151,7 @@ const initEmiCalculator = () => {
 
     // Initial calc
     calculate();
+    return calculate;
 };
 
 
@@ -205,11 +229,22 @@ const initSipCalculator = () => {
 
     // Initial calc
     calculate();
+    return calculate;
 };
 
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
-    initEmiCalculator();
-    initSipCalculator();
+    const calcEmi = initEmiCalculator();
+    const calcSip = initSipCalculator();
+
+    const currencySelect = document.getElementById('currency-selector');
+    if(currencySelect) {
+        currencySelect.addEventListener('change', (e) => {
+            currentCurrency = e.target.value;
+            updateCurrencySymbols();
+            calcEmi();
+            calcSip();
+        });
+    }
 });
