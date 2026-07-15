@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Financial Calculators | EMI, SIP & More</title>
+    <meta name="description" content="Calculate your EMI, SIP returns, and loan interest instantly with our premium, free financial tools.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Fin<span>Tools</span></h1>
+            <nav>
+                <a href="#emi">EMI Calculator</a>
+                <a href="#sip">SIP Calculator</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- EMI Calculator Section -->
+        <section id="emi" class="calculator-section">
+            <div class="calc-header">
+                <h2>EMI Calculator</h2>
+                <p>Plan your loan repayment instantly</p>
+            </div>
+            
+            <div class="calc-grid">
+                <div class="input-panel">
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="emi-principal">Loan Amount</label>
+                            <div class="input-value-wrapper">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" id="emi-principal-input" value="100000" min="1000" max="1000000" step="1000">
+                            </div>
+                        </div>
+                        <input type="range" id="emi-principal-slider" min="1000" max="1000000" step="1000" value="100000" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="emi-rate">Interest Rate (p.a)</label>
+                            <div class="input-value-wrapper">
+                                <input type="number" id="emi-rate-input" value="7.5" min="1" max="20" step="0.1">
+                                <span class="percent-symbol">%</span>
+                            </div>
+                        </div>
+                        <input type="range" id="emi-rate-slider" min="1" max="20" step="0.1" value="7.5" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="emi-tenure">Loan Tenure</label>
+                            <div class="input-value-wrapper">
+                                <input type="number" id="emi-tenure-input" value="15" min="1" max="30" step="1">
+                                <span class="unit-symbol">Yr</span>
+                            </div>
+                        </div>
+                        <input type="range" id="emi-tenure-slider" min="1" max="30" step="1" value="15" class="slider">
+                    </div>
+                </div>
+
+                <div class="results-panel">
+                    <div class="result-highlight">
+                        <h3>Monthly EMI</h3>
+                        <p id="emi-monthly-result" class="highlight-value">$0.00</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="emiChart"></canvas>
+                    </div>
+                    <div class="result-details">
+                        <div class="detail-row">
+                            <span class="dot principal-dot"></span>
+                            <span>Principal Amount</span>
+                            <strong id="emi-principal-result">$0.00</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span class="dot interest-dot"></span>
+                            <span>Total Interest</span>
+                            <strong id="emi-interest-result">$0.00</strong>
+                        </div>
+                        <div class="detail-row total-row">
+                            <span>Total Payable</span>
+                            <strong id="emi-total-result">$0.00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIP Calculator Section -->
+        <section id="sip" class="calculator-section">
+            <div class="calc-header">
+                <h2>SIP Calculator</h2>
+                <p>Calculate your mutual fund returns</p>
+            </div>
+            
+            <div class="calc-grid">
+                <div class="input-panel">
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="sip-monthly">Monthly Investment</label>
+                            <div class="input-value-wrapper">
+                                <span class="currency-symbol">$</span>
+                                <input type="number" id="sip-monthly-input" value="500" min="50" max="10000" step="50">
+                            </div>
+                        </div>
+                        <input type="range" id="sip-monthly-slider" min="50" max="10000" step="50" value="500" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="sip-rate">Expected Return (p.a)</label>
+                            <div class="input-value-wrapper">
+                                <input type="number" id="sip-rate-input" value="12" min="1" max="30" step="0.5">
+                                <span class="percent-symbol">%</span>
+                            </div>
+                        </div>
+                        <input type="range" id="sip-rate-slider" min="1" max="30" step="0.5" value="12" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="sip-tenure">Time Period</label>
+                            <div class="input-value-wrapper">
+                                <input type="number" id="sip-tenure-input" value="10" min="1" max="40" step="1">
+                                <span class="unit-symbol">Yr</span>
+                            </div>
+                        </div>
+                        <input type="range" id="sip-tenure-slider" min="1" max="40" step="1" value="10" class="slider">
+                    </div>
+                </div>
+
+                <div class="results-panel">
+                    <div class="result-highlight">
+                        <h3>Total Value</h3>
+                        <p id="sip-total-result" class="highlight-value">$0.00</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="sipChart"></canvas>
+                    </div>
+                    <div class="result-details">
+                        <div class="detail-row">
+                            <span class="dot principal-dot"></span>
+                            <span>Invested Amount</span>
+                            <strong id="sip-invested-result">$0.00</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span class="dot interest-dot"></span>
+                            <span>Est. Returns</span>
+                            <strong id="sip-returns-result">$0.00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FinTools. Premium Financial Calculators.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
