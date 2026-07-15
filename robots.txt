@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://freefinanceitools.netlify.app/sitemap.xml
+Sitemap: https://free-financial-tools.netlify.app/sitemap.xml
