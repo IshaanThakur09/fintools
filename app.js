@@ -228,11 +228,35 @@ const initSipCalculator = () => {
     return calculate;
 };
 
+// --- Navigation Active State ---
+const initNavigationObserver = () => {
+    const sections = document.querySelectorAll('.calculator-section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active from all
+                navLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active to the current section
+                const id = entry.target.getAttribute('id');
+                const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+    sections.forEach(section => observer.observe(section));
+};
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
     const calcEmi = initEmiCalculator();
     const calcSip = initSipCalculator();
+    initNavigationObserver();
 
     const currencySelects = document.querySelectorAll('.currency-selector');
     currencySelects.forEach(select => {
