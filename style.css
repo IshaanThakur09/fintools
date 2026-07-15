@@ -104,6 +104,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    scroll-margin-top: 6rem;
 }
 
 .calc-header h2 {
