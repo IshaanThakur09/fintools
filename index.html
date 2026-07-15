@@ -3,24 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Financial Calculators | EMI, SIP & More</title>
-    <meta name="description" content="Calculate your EMI, SIP returns, and loan interest instantly with our premium, free financial tools.">
+    
+    <!-- Primary Meta Tags -->
+    <title>FinTools | Premium EMI & SIP Calculators</title>
+    <meta name="title" content="FinTools | Premium EMI & SIP Calculators">
+    <meta name="description" content="Free, premium financial tools. Calculate your EMI, mutual fund SIP returns, and loan interest instantly with our beautifully designed calculators.">
+    <meta name="keywords" content="EMI calculator, SIP calculator, financial tools, loan calculator, mutual fund calculator, investment returns">
+    <meta name="author" content="FinTools">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fintools.vercel.app/">
+    <meta property="og:title" content="FinTools | Premium EMI & SIP Calculators">
+    <meta property="og:description" content="Free, premium financial tools. Calculate your EMI, mutual fund SIP returns, and loan interest instantly with our beautifully designed calculators.">
+    <meta property="og:image" content="https://fintools.vercel.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fintools.vercel.app/">
+    <meta property="twitter:title" content="FinTools | Premium EMI & SIP Calculators">
+    <meta property="twitter:description" content="Free, premium financial tools. Calculate your EMI, mutual fund SIP returns, and loan interest instantly with our beautifully designed calculators.">
+    <meta property="twitter:image" content="https://fintools.vercel.app/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://fintools.vercel.app/">
+
+    <!-- Fonts and Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "FinTools",
+      "url": "https://fintools.vercel.app/",
+      "description": "Premium, free financial calculators for EMI and mutual fund SIP returns.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">Fin<span>Tools</span></h1>
-            <nav>
-                <a href="#emi" class="active">EMI Calculator</a>
-                <a href="#sip">SIP Calculator</a>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header mobile-only" style="display: flex; justify-content: flex-end; align-items: center; padding-bottom: 1rem;">
+                <button class="sidebar-close-btn" aria-label="Close menu">✕</button>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <h3 class="nav-group-title">Calculate</h3>
+                    <a href="index.html#emi" class="active">EMI Calculator</a>
+                    <a href="index.html#sip">SIP Calculator</a>
+                </div>
+                <div class="nav-group">
+                    <h3 class="nav-group-title">Learn</h3>
+                    <a href="learn.html#learn-emi">Understanding EMI</a>
+                    <a href="learn.html#learn-sip">Understanding SIP</a>
+                </div>
             </nav>
-        </div>
-    </header>
+        </aside>
 
-    <main class="container">
+        <div class="content-wrapper">
+            <header class="top-header">
+                <div class="header-content">
+                    <button class="sidebar-open-btn" aria-label="Open menu">☰</button>
+                    <a href="index.html" style="text-decoration: none;"><h1 class="logo">Fin<span>Tools</span></h1></a>
+                </div>
+            </header>
+            
+            <div class="main-content">
+            <main class="container">
+                <div id="calculate-division">
         <!-- EMI Calculator Section -->
         <section id="emi" class="calculator-section">
             <div class="calc-header">
@@ -228,16 +289,20 @@
                 </div>
             </div>
         </section>
-    </main>
+                </div> <!-- End calculate-division -->
+            </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 FinTools. Premium Financial Calculators.</p>
-            <div class="footer-links" style="margin-top: 1rem;">
-                <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
+            <footer>
+                <div class="container">
+                    <p>&copy; 2026 FinTools. Premium Financial Calculators.</p>
+                    <div class="footer-links" style="margin-top: 1rem;">
+                        <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
+                    </div>
+                </div>
+            </footer>
+            </div> <!-- End main-content -->
+        </div> <!-- End content-wrapper -->
+    </div> <!-- End app-layout -->
 
     <script src="app.js"></script>
 </body>

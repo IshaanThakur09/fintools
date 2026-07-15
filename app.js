@@ -76,6 +76,8 @@ const getChartConfig = (labels, data) => ({
 const initEmiCalculator = () => {
     // Inputs
     const pInput = document.getElementById('emi-principal-input');
+    if (!pInput) return () => {}; // Calculator not on this page
+
     const pSlider = document.getElementById('emi-principal-slider');
     const rInput = document.getElementById('emi-rate-input');
     const rSlider = document.getElementById('emi-rate-slider');
@@ -155,6 +157,8 @@ const initEmiCalculator = () => {
 const initSipCalculator = () => {
     // Inputs
     const mInput = document.getElementById('sip-monthly-input');
+    if (!mInput) return () => {}; // Calculator not on this page
+
     const mSlider = document.getElementById('sip-monthly-slider');
     const rInput = document.getElementById('sip-rate-input');
     const rSlider = document.getElementById('sip-rate-slider');
@@ -230,8 +234,10 @@ const initSipCalculator = () => {
 
 // --- Navigation Active State ---
 const initNavigationObserver = () => {
-    const sections = document.querySelectorAll('.calculator-section');
-    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('.calculator-section, .learn-section');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+    
+    if(sections.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -239,9 +245,9 @@ const initNavigationObserver = () => {
                 // Remove active from all
                 navLinks.forEach(link => link.classList.remove('active'));
                 
-                // Add active to the current section
+                // Add active to the current section (using $= to match ends with #id since hrefs are absolute now)
                 const id = entry.target.getAttribute('id');
-                const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+                const activeLink = document.querySelector(`.sidebar-nav a[href$="#${id}"]`);
                 if (activeLink) {
                     activeLink.classList.add('active');
                 }
@@ -252,11 +258,31 @@ const initNavigationObserver = () => {
     sections.forEach(section => observer.observe(section));
 };
 
+// --- Sidebar Toggle Logic ---
+const initSidebarToggle = () => {
+    const openBtns = document.querySelectorAll('.sidebar-open-btn');
+    const closeBtns = document.querySelectorAll('.sidebar-close-btn');
+    const sidebar = document.querySelector('.sidebar');
+    const body = document.body;
+
+    const toggleSidebar = () => {
+        if(window.innerWidth <= 1024) {
+            sidebar.classList.toggle('open');
+        } else {
+            body.classList.toggle('sidebar-collapsed');
+        }
+    };
+
+    openBtns.forEach(btn => btn.addEventListener('click', toggleSidebar));
+    closeBtns.forEach(btn => btn.addEventListener('click', toggleSidebar));
+};
+
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
     const calcEmi = initEmiCalculator();
     const calcSip = initSipCalculator();
     initNavigationObserver();
+    initSidebarToggle();
 
     const currencySelects = document.querySelectorAll('.currency-selector');
     currencySelects.forEach(select => {
