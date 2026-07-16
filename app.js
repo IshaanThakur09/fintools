@@ -35,6 +35,25 @@ const COLORS = {
     bgSecondary: 'rgba(255, 255, 255, 0.03)'
 };
 
+// Custom Tooltip Positioner that perfectly tracks cursor and ALWAYS opens outward
+Chart.Tooltip.positioners.cursor = function(elements, eventPosition) {
+    if (!elements.length || !eventPosition) return false;
+    
+    const chart = this.chart;
+    const center = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+    
+    // If cursor is on the left half of the chart, draw box to the left (xAlign: right)
+    // If cursor is on the right half, draw box to the right (xAlign: left)
+    const xAlign = eventPosition.x < center ? 'right' : 'left';
+    
+    return {
+        x: eventPosition.x,
+        y: eventPosition.y,
+        xAlign: xAlign,
+        yAlign: 'center'
+    };
+};
+
 // Standard Chart Config
 const getChartConfig = (labels, data) => ({
     type: 'doughnut',
@@ -72,6 +91,7 @@ const getChartConfig = (labels, data) => ({
                 display: false
             },
             tooltip: {
+                position: 'cursor',
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 titleColor: '#f8fafc',
                 bodyColor: '#e2e8f0',
