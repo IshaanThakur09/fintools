@@ -40,23 +40,11 @@ Chart.Tooltip.positioners.outside = function(elements, eventPosition) {
     if (!elements.length) return false;
     
     const chart = this.chart;
-    const center = {
-        x: chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2,
-        y: chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2
-    };
-
-    const dx = eventPosition.x - center.x;
-    const dy = eventPosition.y - center.y;
     
-    const angle = Math.atan2(dy, dx);
-    const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
-    
-    // Push it outside the pie radius
-    const pushDistance = radius + 10; 
-    
+    // Anchor to the left side of the chart area, but follow the cursor vertically
     return {
-        x: center.x + Math.cos(angle) * pushDistance,
-        y: center.y + Math.sin(angle) * pushDistance
+        x: chart.chartArea.left + 20,
+        y: eventPosition.y
     };
 };
 
@@ -98,6 +86,8 @@ const getChartConfig = (labels, data) => ({
             },
             tooltip: {
                 position: 'outside',
+                xAlign: 'left',
+                yAlign: 'center',
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 titleColor: '#f8fafc',
                 bodyColor: '#e2e8f0',
