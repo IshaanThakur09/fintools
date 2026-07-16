@@ -114,22 +114,10 @@ const faux3DPlugin = {
                     ctx.closePath();
                     
                     ctx.fillStyle = index === 0 ? '#1a0545' : '#4a107a';
-                    
-                    // Shadow for bottom-most layer
-                    if (absY === bottomY) {
-                        ctx.shadowColor = 'rgba(0,0,0,0.6)';
-                        ctx.shadowBlur = 20;
-                        ctx.shadowOffsetY = 15;
-                    } else {
-                        ctx.shadowColor = 'transparent';
-                        ctx.shadowBlur = 0;
-                        ctx.shadowOffsetY = 0;
-                    }
                     ctx.fill();
                     
                     // --- If Top Layer, Draw Top Face & Highlights immediately so it Z-sorts properly ---
                     if (absY === topYs[index]) {
-                        ctx.shadowColor = 'transparent';
                         
                         // Top Face
                         ctx.beginPath();
