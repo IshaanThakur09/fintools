@@ -25,10 +25,9 @@
 }
 
 html {
-    /* Base height for App Shell */
-    height: 100%;
+    min-height: 100vh;
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 * {
@@ -45,8 +44,8 @@ body {
     -webkit-font-smoothing: antialiased;
     /* App shell body */
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
@@ -58,11 +57,10 @@ body {
 /* App Layout */
 .app-layout {
     display: flex;
-    height: 100%; /* Fill the fixed body */
+    min-height: 100vh;
     width: 100%;
     position: relative;
     z-index: 1;
-    overflow: hidden;
 }
 
 .app-layout::before,
@@ -108,6 +106,8 @@ body {
     height: 110px;
     min-height: 110px;
     flex-shrink: 0;
+    position: sticky;
+    top: 0;
     z-index: 1100;
 }
 
@@ -264,8 +264,6 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
     scroll-behavior: smooth;
     animation: fadeIn 0.4s ease-out forwards;
 }
