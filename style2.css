@@ -27,7 +27,6 @@
 html {
     min-height: 100vh;
     width: 100%;
-    overflow-x: hidden;
 }
 
 * {
@@ -45,7 +44,6 @@ body {
     /* App shell body */
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
 .container {

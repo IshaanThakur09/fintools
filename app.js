@@ -81,17 +81,7 @@ const faux3DPlugin = {
             targetLifts[1] = 20;
         }
         
-        let needsRedraw = false;
-        for (let i = 0; i < 2; i++) {
-            chart.fauxLifts[i] += (targetLifts[i] - chart.fauxLifts[i]) * 0.15;
-            if (Math.abs(chart.fauxLifts[i] - targetLifts[i]) > 0.1) needsRedraw = true;
-        }
-
-        // Loop animation until targets reached
-        if (needsRedraw) {
-            requestAnimationFrame(() => chart.render());
-        }
-
+        chart.fauxLifts = targetLifts;
         const baseDepth = 28;
         
         ctx.save();
