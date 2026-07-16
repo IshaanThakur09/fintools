@@ -315,98 +315,17 @@ const initSipCalculator = () => {
     return calculate;
 };
 
-// --- Scroll Reveal Animations ---
-const initScrollReveal = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    if(reveals.length === 0) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Only animate once
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    reveals.forEach(reveal => observer.observe(reveal));
-};
-
-// --- Navigation Active State ---
-const initNavigationObserver = () => {
-    const sections = document.querySelectorAll('.calculator-section, .learn-section');
-    const navLinks = document.querySelectorAll('.sidebar-nav a');
+// --- Navigation Active State (Simple) ---
+const initSimpleNavigation = () => {
+    const navLinks = document.querySelectorAll('.sidebar-nav a:not(.privacy-btn)');
     
-    let scrollLock = false;
-    let scrollLockTimeout = null;
-    const indicator = document.querySelector('.nav-indicator');
-
-    const updateIndicator = (activeLink) => {
-        if (!indicator || !activeLink) return;
-        const navRect = activeLink.closest('.sidebar-nav').getBoundingClientRect();
-        const linkRect = activeLink.getBoundingClientRect();
-        const offsetTop = linkRect.top - navRect.top;
-        const offsetLeft = linkRect.left - navRect.left;
-        
-        indicator.style.opacity = '1';
-        indicator.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
-        indicator.style.width = `${activeLink.offsetWidth}px`;
-        indicator.style.height = `${activeLink.offsetHeight}px`;
-    };
-
-    const visibleSections = new Set();
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                visibleSections.add(entry.target.getAttribute('id'));
-            } else {
-                visibleSections.delete(entry.target.getAttribute('id'));
-            }
-        });
-
-        if (scrollLock || visibleSections.size === 0) return;
-
-        // Find the first visible section in DOM order to be the active one
-        let activeId = null;
-        for (const section of sections) {
-            if (visibleSections.has(section.getAttribute('id'))) {
-                activeId = section.getAttribute('id');
-                break;
-            }
-        }
-
-        if (activeId) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            const activeLink = document.querySelector(`.sidebar-nav a[href$="#${activeId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-                updateIndicator(activeLink);
-            }
-        }
-    }, { threshold: 0.1 }); // Trigger when 10% visible to catch small scrolls
-
-    sections.forEach(section => observer.observe(section));
-
-    // Force instant update on click so it doesn't wait for scroll/observer
+    // Force instant update on click, purely driven by CSS classes
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
-            updateIndicator(this);
-            
-            // Lock the observer temporarily while smooth scrolling happens
-            scrollLock = true;
-            if (scrollLockTimeout) clearTimeout(scrollLockTimeout);
-            scrollLockTimeout = setTimeout(() => { scrollLock = false; }, 800);
         });
     });
-
-    // Initial position on load
-    setTimeout(() => {
-        const initialActive = document.querySelector('.sidebar-nav a.active');
-        if (initialActive) updateIndicator(initialActive);
-    }, 100);
 };
 
 // --- Sidebar Toggle Logic ---
@@ -499,8 +418,7 @@ const buildCustomDropdowns = (calcEmi, calcSip) => {
 document.addEventListener('DOMContentLoaded', () => {
     const calcEmi = initEmiCalculator();
     const calcSip = initSipCalculator();
-    initNavigationObserver();
-    initScrollReveal();
+    initSimpleNavigation();
     initSidebarToggle();
 
     // Strictly enforce numeric-only input
