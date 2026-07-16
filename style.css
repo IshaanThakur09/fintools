@@ -53,7 +53,6 @@ body {
 .app-layout {
     display: flex;
     min-height: 100vh;
-    animation: fadeIn 0.4s ease-out forwards;
 }
 
 .content-wrapper {
@@ -61,6 +60,7 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 0;
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
 /* Top Header */
@@ -117,6 +117,7 @@ body {
     gap: 3rem;
     transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
 .sidebar-collapsed .sidebar {
