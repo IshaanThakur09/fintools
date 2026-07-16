@@ -27,6 +27,7 @@
 html {
     min-height: 100vh;
     width: 100%;
+    overflow-x: hidden;
 }
 
 * {
@@ -44,6 +45,7 @@ body {
     /* App shell body */
     width: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .container {
@@ -65,26 +67,27 @@ body {
 .app-layout::after {
     content: '';
     position: fixed;
+    border-radius: 50%;
+    filter: blur(140px);
     z-index: -1;
+    opacity: 0.6;
     pointer-events: none;
-    transform: translateZ(0);
-    will-change: transform;
 }
 
 .app-layout::before {
-    background: radial-gradient(circle, rgba(179, 115, 255, 0.15) 0%, rgba(179, 115, 255, 0) 70%);
-    width: 60vw;
-    height: 60vw;
-    top: -15vw;
-    left: -15vw;
+    background: rgba(179, 115, 255, 0.5);
+    width: 50vw;
+    height: 50vw;
+    top: -10vw;
+    left: -10vw;
 }
 
 .app-layout::after {
-    background: radial-gradient(circle, rgba(255, 123, 229, 0.12) 0%, rgba(255, 123, 229, 0) 70%);
-    width: 50vw;
-    height: 50vw;
-    bottom: -15vw;
-    right: -15vw;
+    background: rgba(255, 123, 229, 0.4);
+    width: 40vw;
+    height: 40vw;
+    bottom: -10vw;
+    right: -10vw;
 }
 
 .content-wrapper {
@@ -321,11 +324,6 @@ main {
 
 .mobile-only {
         display: block;
-    }
-    
-    .app-layout::before,
-    .app-layout::after {
-        display: none !important;
     }
 }
 
@@ -662,39 +660,29 @@ input[type="number"]::-webkit-inner-spin-button {
     max-width: 320px;
     aspect-ratio: 1;
     position: relative;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto;
 }
 
-.chart-container::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    box-shadow: 0 0 100px 80px rgba(139, 92, 246, 0.25);
-    z-index: 0;
-    pointer-events: none;
-    background: transparent;
-}
-
 .chart-container canvas {
-    display: block;
-    background-color: transparent;
+    position: relative;
+    z-index: 2;
+    transform: scaleY(0.65);
+    transform-origin: center;
+    filter: 
+        drop-shadow(0 0 40px rgba(139, 92, 246, 0.6))
+        drop-shadow(0 30px 35px rgba(0, 0, 0, 0.6));
+    transition: transform 0.3s ease;
 }
 
 .chart-container:hover canvas {
-    filter: brightness(1.08);
+    transform: scaleY(0.75);
 }
 
 .chart-center-label {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;

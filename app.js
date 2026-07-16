@@ -63,7 +63,7 @@ Chart.Tooltip.positioners.outside = function(elements, eventPosition) {
 // Faux 3D Chart Plugin
 const faux3DPlugin = {
     id: 'faux3d',
-    afterDraw: (chart) => {
+    beforeDraw: (chart) => {
         const ctx = chart.ctx;
         const meta = chart.getDatasetMeta(0);
         
@@ -81,7 +81,17 @@ const faux3DPlugin = {
             targetLifts[1] = 20;
         }
         
-        chart.fauxLifts = targetLifts;
+        let needsRedraw = false;
+        for (let i = 0; i < 2; i++) {
+            chart.fauxLifts[i] += (targetLifts[i] - chart.fauxLifts[i]) * 0.15;
+            if (Math.abs(chart.fauxLifts[i] - targetLifts[i]) > 0.1) needsRedraw = true;
+        }
+
+        // Loop animation until targets reached
+        if (needsRedraw) {
+            requestAnimationFrame(() => chart.render());
+        }
+
         const baseDepth = 28;
         
         ctx.save();
@@ -306,12 +316,6 @@ const initEmiCalculator = () => {
             sliderEl.style.setProperty('--fill', `${percentage}%`);
         };
 
-        let calcTimeout;
-        const triggerCalc = () => {
-            if(calcTimeout) cancelAnimationFrame(calcTimeout);
-            calcTimeout = requestAnimationFrame(calculate);
-        };
-
         inputEl.addEventListener('input', () => {
             let val = parseFloat(inputEl.value);
             let min = parseFloat(inputEl.min);
@@ -322,13 +326,13 @@ const initEmiCalculator = () => {
             
             sliderEl.value = inputEl.value;
             updateSliderFill(inputEl.value);
-            triggerCalc();
+            requestAnimationFrame(calculate);
         });
         
         sliderEl.addEventListener('input', () => {
             inputEl.value = sliderEl.value;
             updateSliderFill(sliderEl.value);
-            triggerCalc();
+            requestAnimationFrame(calculate);
         });
 
         // Init fill
@@ -408,12 +412,6 @@ const initSipCalculator = () => {
             sliderEl.style.setProperty('--fill', `${percentage}%`);
         };
 
-        let calcTimeout;
-        const triggerCalc = () => {
-            if(calcTimeout) cancelAnimationFrame(calcTimeout);
-            calcTimeout = requestAnimationFrame(calculate);
-        };
-
         inputEl.addEventListener('input', () => {
             let val = parseFloat(inputEl.value);
             let min = parseFloat(inputEl.min);
@@ -424,13 +422,13 @@ const initSipCalculator = () => {
             
             sliderEl.value = inputEl.value;
             updateSliderFill(inputEl.value);
-            triggerCalc();
+            requestAnimationFrame(calculate);
         });
         
         sliderEl.addEventListener('input', () => {
             inputEl.value = sliderEl.value;
             updateSliderFill(sliderEl.value);
-            triggerCalc();
+            requestAnimationFrame(calculate);
         });
 
         // Init fill
