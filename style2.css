@@ -185,6 +185,21 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    position: relative; /* Context for sliding indicator */
+}
+
+.nav-indicator {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 44px; /* Default height, will be set via JS */
+    background-color: var(--accent-light);
+    border: 1px solid rgba(159, 91, 255, 0.2);
+    box-shadow: 0 0 15px rgba(159, 91, 255, 0.15);
+    border-radius: var(--radius-md);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .nav-group {
@@ -209,13 +224,10 @@ body {
     text-decoration: none;
     border-radius: var(--radius-md);
     font-weight: 500;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.2s ease;
     border: 1px solid transparent;
-    transform: scale(1);
-}
-
-.sidebar-nav a:active {
-    transform: scale(0.96);
+    position: relative;
+    z-index: 1; /* Keep text above the sliding background */
 }
 
 .sidebar-nav a:hover {
@@ -225,9 +237,6 @@ body {
 
 .sidebar-nav a.active {
     color: var(--accent);
-    background-color: var(--accent-light);
-    border-color: rgba(159, 91, 255, 0.2);
-    box-shadow: 0 0 15px rgba(159, 91, 255, 0.15);
 }
 
 .privacy-btn {

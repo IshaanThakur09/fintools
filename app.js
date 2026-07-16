@@ -337,10 +337,19 @@ const initNavigationObserver = () => {
     const sections = document.querySelectorAll('.calculator-section, .learn-section');
     const navLinks = document.querySelectorAll('.sidebar-nav a');
     
-    if(sections.length === 0) return;
-
     let scrollLock = false;
     let scrollLockTimeout = null;
+    const indicator = document.querySelector('.nav-indicator');
+
+    const updateIndicator = (activeLink) => {
+        if (!indicator || !activeLink) return;
+        const navRect = activeLink.closest('.sidebar-nav').getBoundingClientRect();
+        const linkRect = activeLink.getBoundingClientRect();
+        const offsetTop = linkRect.top - navRect.top;
+        indicator.style.opacity = '1';
+        indicator.style.transform = `translateY(${offsetTop}px)`;
+        indicator.style.height = `${activeLink.offsetHeight}px`;
+    };
 
     const observer = new IntersectionObserver((entries) => {
         if (scrollLock) return; // Don't override if user just clicked
@@ -350,7 +359,10 @@ const initNavigationObserver = () => {
                 navLinks.forEach(link => link.classList.remove('active'));
                 const id = entry.target.getAttribute('id');
                 const activeLink = document.querySelector(`.sidebar-nav a[href$="#${id}"]`);
-                if (activeLink) activeLink.classList.add('active');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    updateIndicator(activeLink);
+                }
             }
         });
     }, { threshold: 0.3 }); // Trigger when 30% of the section is visible
@@ -362,6 +374,7 @@ const initNavigationObserver = () => {
         link.addEventListener('click', function() {
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
+            updateIndicator(this);
             
             // Lock the observer temporarily while smooth scrolling happens
             scrollLock = true;
@@ -369,6 +382,12 @@ const initNavigationObserver = () => {
             scrollLockTimeout = setTimeout(() => { scrollLock = false; }, 800);
         });
     });
+
+    // Initial position on load
+    setTimeout(() => {
+        const initialActive = document.querySelector('.sidebar-nav a.active');
+        if (initialActive) updateIndicator(initialActive);
+    }, 100);
 };
 
 // --- Sidebar Toggle Logic ---
