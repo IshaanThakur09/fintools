@@ -27,7 +27,6 @@
 html {
     min-height: 100vh;
     width: 100%;
-    overflow-x: clip;
 }
 
 * {
@@ -45,7 +44,6 @@ body {
     /* App shell body */
     width: 100%;
     min-height: 100vh;
-    overflow-x: clip;
 }
 
 .container {
@@ -67,9 +65,10 @@ body {
 .app-layout::after {
     content: '';
     position: fixed;
-    border-radius: 50%;
     z-index: -1;
     pointer-events: none;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .app-layout::before {
