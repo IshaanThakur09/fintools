@@ -316,6 +316,12 @@ const initEmiCalculator = () => {
             sliderEl.style.setProperty('--fill', `${percentage}%`);
         };
 
+        let calcTimeout;
+        const triggerCalc = () => {
+            if(calcTimeout) cancelAnimationFrame(calcTimeout);
+            calcTimeout = requestAnimationFrame(calculate);
+        };
+
         inputEl.addEventListener('input', () => {
             let val = parseFloat(inputEl.value);
             let min = parseFloat(inputEl.min);
@@ -326,13 +332,13 @@ const initEmiCalculator = () => {
             
             sliderEl.value = inputEl.value;
             updateSliderFill(inputEl.value);
-            requestAnimationFrame(calculate);
+            triggerCalc();
         });
         
         sliderEl.addEventListener('input', () => {
             inputEl.value = sliderEl.value;
             updateSliderFill(sliderEl.value);
-            requestAnimationFrame(calculate);
+            triggerCalc();
         });
 
         // Init fill
@@ -412,6 +418,12 @@ const initSipCalculator = () => {
             sliderEl.style.setProperty('--fill', `${percentage}%`);
         };
 
+        let calcTimeout;
+        const triggerCalc = () => {
+            if(calcTimeout) cancelAnimationFrame(calcTimeout);
+            calcTimeout = requestAnimationFrame(calculate);
+        };
+
         inputEl.addEventListener('input', () => {
             let val = parseFloat(inputEl.value);
             let min = parseFloat(inputEl.min);
@@ -422,13 +434,13 @@ const initSipCalculator = () => {
             
             sliderEl.value = inputEl.value;
             updateSliderFill(inputEl.value);
-            requestAnimationFrame(calculate);
+            triggerCalc();
         });
         
         sliderEl.addEventListener('input', () => {
             inputEl.value = sliderEl.value;
             updateSliderFill(sliderEl.value);
-            requestAnimationFrame(calculate);
+            triggerCalc();
         });
 
         // Init fill

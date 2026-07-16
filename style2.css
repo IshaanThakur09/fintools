@@ -325,6 +325,11 @@ main {
 .mobile-only {
         display: block;
     }
+    
+    .app-layout::before,
+    .app-layout::after {
+        display: none !important;
+    }
 }
 
 #calculate-division, #learn-division {
