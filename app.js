@@ -13,7 +13,7 @@ const formatCurrency = (value) => {
     return new Intl.NumberFormat(locale, {
         style: 'currency',
         currency: currentCurrency,
-        maximumFractionDigits: 0
+        maximumFractionDigits: 2
     }).format(value);
 };
 
