@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="google-site-verification" content="1IIfayc9pIoBfvX_FND5_a-8LLpeOUZc1_-hCAOTIfU" />
+    <title>Chorusplex | Premium EMI & SIP Financial Calculators</title>
+    <meta name="description" content="Calculate your Equated Monthly Installments (EMI) and Systematic Investment Plan (SIP) returns with Chorusplex. Free, fast, and premium financial calculators.">
+    <meta name="keywords" content="EMI calculator, SIP calculator, financial tools, mutual fund returns, loan EMI, personal finance">
+    <meta name="author" content="Chorusplex">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Chorusplex | Premium EMI & SIP Calculators">
+    <meta property="og:description" content="Plan your loan repayments and mutual fund investments instantly with our professional financial calculators.">
+    <meta property="og:type" content="website">
+    <meta name="title" content="Chorusplex | Premium EMI & SIP Calculators">
+    <meta name="description" content="Free, premium financial tools. Calculate your EMI, mutual fund SIP returns, and loan interest instantly with our beautifully designed calculators.">
+    <meta name="keywords" content="EMI calculator, SIP calculator, financial tools, loan calculator, mutual fund calculator, investment returns">
+    <meta name="author" content="Chorusplex">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://Chorusplex.vercel.app/">
+    <meta property="og:title" content="Chorusplex | Premium EMI & SIP Calculators">
+    <meta property="og:description" content="Free, premium financial tools. Calculate your EMI, mutual fund SIP returns, and loan interest instantly with our beautifully designed calculators.">
+    <meta property="og:image" content="https://Chorusplex.vercel.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://Chorusplex.vercel.app/">
+    <meta property="twitter:title" content="Chorusplex | Premium EMI & SIP Calculators">
+    <meta property="twitter:description" content="Free, premium financial tools. Calculate your EMI, mutual fund SIP returns, and loan interest instantly with our beautifully designed calculators.">
+    <meta property="twitter:image" content="https://Chorusplex.vercel.app/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://Chorusplex.vercel.app/">
+
+    <!-- Fonts and Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    
+    <!-- Preconnect Chart.js -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Chorusplex",
+      "url": "https://Chorusplex.vercel.app/",
+      "description": "Premium, free financial calculators for EMI and mutual fund SIP returns.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header mobile-only" style="display: flex; justify-content: flex-end; align-items: center; padding-bottom: 1rem;">
+                <button class="sidebar-close-btn" aria-label="Close menu">✕</button>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <h3 class="nav-group-title">Calculate</h3>
+                    <a href="calculators.html#emi" class="active">EMI Calculator</a>
+                    <a href="calculators.html#sip">SIP Calculator</a>
+                </div>
+                <div class="nav-group">
+                    <h3 class="nav-group-title">Learn</h3>
+                    <a href="learn.html#learn-emi">Understanding EMI</a>
+                    <a href="learn.html#learn-sip">Understanding SIP</a>
+                </div>
+            </nav>
+            <nav class="sidebar-nav" style="margin-top: auto;">
+                <a href="privacy.html" class="privacy-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Privacy Policy
+                </a>
+            </nav>
+        </aside>
+
+        <div class="content-wrapper">
+            <header class="top-header">
+                <div class="header-content">
+                    <button class="sidebar-open-btn" aria-label="Open menu">☰</button>
+                    <a href="index.html" style="text-decoration: none;"><h1 class="logo">Chorus<span>plex</span></h1></a>
+                </div>
+            </header>
+            
+            <div class="main-content">
+            <main class="container">
+                <div id="calculate-division">
+        <!-- EMI Calculator Section -->
+        <section id="emi" class="calculator-section reveal">
+            <div class="calc-header">
+                <h2>EMI Calculator</h2>
+                <p>Plan your loan repayment instantly</p>
+            </div>
+            
+            <div class="calc-grid">
+                <div class="input-panel">
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="emi-principal">Loan Amount</label>
+                            <div class="input-value-wrapper">
+                                <select class="currency-selector input-currency">
+                                    <option value="INR" selected>INR (₹)</option>
+                                    <option value="USD">USD ($)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                    <option value="JPY">JPY (¥)</option>
+                                    <option value="AUD">AUD (A$)</option>
+                                    <option value="CAD">CAD (C$)</option>
+                                    <option value="CHF">CHF (CHF)</option>
+                                    <option value="CNY">CNY (¥)</option>
+                                    <option value="SEK">SEK (kr)</option>
+                                    <option value="NZD">NZD (NZ$)</option>
+                                    <option value="MXN">MXN ($)</option>
+                                    <option value="SGD">SGD (S$)</option>
+                                    <option value="HKD">HKD (HK$)</option>
+                                    <option value="NOK">NOK (kr)</option>
+                                    <option value="KRW">KRW (₩)</option>
+                                    <option value="TRY">TRY (₺)</option>
+                                    <option value="RUB">RUB (₽)</option>
+                                    <option value="BRL">BRL (R$)</option>
+                                    <option value="ZAR">ZAR (R)</option>
+                                    <option value="AED">AED (د.إ)</option>
+                                    <option value="SAR">SAR (﷼)</option>
+                                    <option value="THB">THB (฿)</option>
+                                    <option value="IDR">IDR (Rp)</option>
+                                    <option value="MYR">MYR (RM)</option>
+                                    <option value="PHP">PHP (₱)</option>
+                                    <option value="VND">VND (₫)</option>
+                                    <option value="PLN">PLN (zł)</option>
+                                    <option value="ARS">ARS ($)</option>
+                                    <option value="CLP">CLP ($)</option>
+                                    <option value="COP">COP ($)</option>
+                                    <option value="EGP">EGP (E£)</option>
+                                    <option value="NGN">NGN (₦)</option>
+                                    <option value="KES">KES (KSh)</option>
+                                </select>
+                                <input type="text" id="emi-principal-input" value="100000">
+                            </div>
+                        </div>
+                        <input type="range" id="emi-principal-slider" min="1000" max="1000000" step="1000" value="100000" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="emi-rate">Interest Rate (p.a)</label>
+                            <div class="input-value-wrapper">
+                                <input type="text" id="emi-rate-input" value="7.5">
+                                <span class="percent-symbol">%</span>
+                            </div>
+                        </div>
+                        <input type="range" id="emi-rate-slider" min="1" max="20" step="0.1" value="7.5" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="emi-tenure">Loan Tenure</label>
+                            <div class="input-value-wrapper">
+                                <input type="text" id="emi-tenure-input" value="15">
+                                <span class="unit-symbol">Yr</span>
+                            </div>
+                        </div>
+                        <input type="range" id="emi-tenure-slider" min="1" max="30" step="1" value="15" class="slider">
+                    </div>
+                </div>
+
+                <div class="results-panel">
+                    <div class="result-highlight">
+                        <h3>Monthly EMI</h3>
+                        <p id="emi-monthly-result" class="highlight-value">$0.00</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="emiChart"></canvas>
+                        <div class="chart-center-label">
+                            <span class="chart-center-title">Total Payable</span>
+                            <span class="chart-center-value" id="emi-chart-center-value">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="detail-row">
+                            <span class="dot principal-dot"></span>
+                            <span>Principal Amount</span>
+                            <strong id="emi-principal-result">$0.00</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span class="dot interest-dot"></span>
+                            <span>Total Interest</span>
+                            <strong id="emi-interest-result">$0.00</strong>
+                        </div>
+                        <div class="detail-row total-row">
+                            <span>Total Payable</span>
+                            <strong id="emi-total-result">$0.00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIP Calculator Section -->
+        <section id="sip" class="calculator-section reveal">
+            <div class="calc-header">
+                <h2>SIP Calculator</h2>
+                <p>Calculate your mutual fund returns</p>
+            </div>
+            
+            <div class="calc-grid">
+                <div class="input-panel">
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="sip-monthly">Monthly Investment</label>
+                            <div class="input-value-wrapper">
+                                <select class="currency-selector input-currency">
+                                    <option value="INR" selected>INR (₹)</option>
+                                    <option value="USD">USD ($)</option>
+                                    <option value="EUR">EUR (€)</option>
+                                    <option value="GBP">GBP (£)</option>
+                                    <option value="JPY">JPY (¥)</option>
+                                    <option value="AUD">AUD (A$)</option>
+                                    <option value="CAD">CAD (C$)</option>
+                                    <option value="CHF">CHF (CHF)</option>
+                                    <option value="CNY">CNY (¥)</option>
+                                    <option value="SEK">SEK (kr)</option>
+                                    <option value="NZD">NZD (NZ$)</option>
+                                    <option value="MXN">MXN ($)</option>
+                                    <option value="SGD">SGD (S$)</option>
+                                    <option value="HKD">HKD (HK$)</option>
+                                    <option value="NOK">NOK (kr)</option>
+                                    <option value="KRW">KRW (₩)</option>
+                                    <option value="TRY">TRY (₺)</option>
+                                    <option value="RUB">RUB (₽)</option>
+                                    <option value="BRL">BRL (R$)</option>
+                                    <option value="ZAR">ZAR (R)</option>
+                                    <option value="AED">AED (د.إ)</option>
+                                    <option value="SAR">SAR (﷼)</option>
+                                    <option value="THB">THB (฿)</option>
+                                    <option value="IDR">IDR (Rp)</option>
+                                    <option value="MYR">MYR (RM)</option>
+                                    <option value="PHP">PHP (₱)</option>
+                                    <option value="VND">VND (₫)</option>
+                                    <option value="PLN">PLN (zł)</option>
+                                    <option value="ARS">ARS ($)</option>
+                                    <option value="CLP">CLP ($)</option>
+                                    <option value="COP">COP ($)</option>
+                                    <option value="EGP">EGP (E£)</option>
+                                    <option value="NGN">NGN (₦)</option>
+                                    <option value="KES">KES (KSh)</option>
+                                </select>
+                                <input type="text" id="sip-monthly-input" value="500">
+                            </div>
+                        </div>
+                        <input type="range" id="sip-monthly-slider" min="50" max="10000" step="50" value="500" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="sip-rate">Expected Return (p.a)</label>
+                            <div class="input-value-wrapper">
+                                <input type="text" id="sip-rate-input" value="12">
+                                <span class="percent-symbol">%</span>
+                            </div>
+                        </div>
+                        <input type="range" id="sip-rate-slider" min="1" max="30" step="0.5" value="12" class="slider">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-header">
+                            <label for="sip-tenure">Time Period</label>
+                            <div class="input-value-wrapper">
+                                <input type="text" id="sip-tenure-input" value="10">
+                                <span class="unit-symbol">Yr</span>
+                            </div>
+                        </div>
+                        <input type="range" id="sip-tenure-slider" min="1" max="40" step="1" value="10" class="slider">
+                    </div>
+                </div>
+
+                <div class="results-panel">
+                    <div class="result-highlight">
+                        <h3>Total Value</h3>
+                        <p id="sip-total-result" class="highlight-value">$0.00</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="sipChart"></canvas>
+                        <div class="chart-center-label">
+                            <span class="chart-center-title">Total Value</span>
+                            <span class="chart-center-value" id="sip-chart-center-value">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="result-details">
+                        <div class="detail-row">
+                            <span class="dot principal-dot"></span>
+                            <span>Invested Amount</span>
+                            <strong id="sip-invested-result">$0.00</strong>
+                        </div>
+                        <div class="detail-row">
+                            <span class="dot interest-dot"></span>
+                            <span>Est. Returns</span>
+                            <strong id="sip-returns-result">$0.00</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                </div> <!-- End calculate-division -->
+            </main>
+
+            <footer>
+                <div class="container">
+                    <p>&copy; 2026 Chorusplex. Premium Financial Calculators.</p>
+                </div>
+            </footer>
+            </div> <!-- End main-content -->
+        </div> <!-- End content-wrapper -->
+    </div> <!-- End app-layout -->
+
+    <script src="app.js"></script>
+</body>
+</html>
