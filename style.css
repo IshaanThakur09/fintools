@@ -266,7 +266,7 @@ main {
         margin-left: -280px; /* Hidden by default on mobile */
         border-right: 1px solid var(--border-light);
         padding: 1.5rem;
-        height: 100vh;
+        height: 100%; /* Fixes 100vh bug on mobile browsers */
         top: 0;
     }
 
