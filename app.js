@@ -346,8 +346,11 @@ const initNavigationObserver = () => {
         const navRect = activeLink.closest('.sidebar-nav').getBoundingClientRect();
         const linkRect = activeLink.getBoundingClientRect();
         const offsetTop = linkRect.top - navRect.top;
+        const offsetLeft = linkRect.left - navRect.left;
+        
         indicator.style.opacity = '1';
-        indicator.style.transform = `translateY(${offsetTop}px)`;
+        indicator.style.transform = `translate(${offsetLeft}px, ${offsetTop}px)`;
+        indicator.style.width = `${activeLink.offsetWidth}px`;
         indicator.style.height = `${activeLink.offsetHeight}px`;
     };
 

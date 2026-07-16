@@ -190,9 +190,10 @@ body {
 
 .nav-indicator {
     position: absolute;
+    top: 0;
     left: 0;
-    right: 0;
     height: 44px; /* Default height, will be set via JS */
+    width: 200px; /* Default width, will be set via JS */
     background-color: var(--accent-light);
     border: 1px solid rgba(159, 91, 255, 0.2);
     box-shadow: 0 0 15px rgba(159, 91, 255, 0.15);
