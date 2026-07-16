@@ -195,11 +195,11 @@ const getChartConfig = (labels, data) => ({
         labels: labels,
         datasets: [{
             data: data,
-            backgroundColor: 'transparent', // Custom draw plugin handles rendering instead
+            backgroundColor: ['#8b5cf6', '#d946ef'],
             borderWidth: 0,
-            spacing: 0, 
-            borderRadius: 0,
-            hoverOffset: 0 // Disable 2D native expansion for 3D physical lift
+            spacing: 2, 
+            borderRadius: 4,
+            hoverOffset: 15
         }]
     },
     options: {
