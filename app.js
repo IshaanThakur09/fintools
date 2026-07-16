@@ -85,6 +85,8 @@ const faux3DPlugin = {
 
         const baseDepth = 28;
         
+        if (!meta || !meta.data || meta.data.length === 0 || meta.data[0].y === undefined) return;
+        
         ctx.save();
         
         // 1. Calculate absolute Y bounds for all blocks
