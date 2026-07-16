@@ -166,8 +166,30 @@ const initEmiCalculator = () => {
             let min = parseFloat(inputEl.min);
             let max = parseFloat(inputEl.max);
             
-            if(val < min) inputEl.value = min;
-            if(val > max) inputEl.value = max;
+            // Allow empty/invalid during typing without breaking the slider fill
+            if (isNaN(val)) {
+                sliderEl.value = min;
+                updateSliderFill(min);
+            } else {
+                // Don't snap the input text while typing, just cap the slider visually
+                let sliderVal = val;
+                if (sliderVal < min) sliderVal = min;
+                if (sliderVal > max) sliderVal = max;
+                
+                sliderEl.value = sliderVal;
+                updateSliderFill(sliderVal);
+            }
+            requestAnimationFrame(calculate);
+        });
+        
+        inputEl.addEventListener('blur', () => {
+            let val = parseFloat(inputEl.value);
+            let min = parseFloat(inputEl.min);
+            let max = parseFloat(inputEl.max);
+            
+            // Snap to bounds only when the user finishes typing
+            if (isNaN(val) || val < min) inputEl.value = min;
+            else if (val > max) inputEl.value = max;
             
             sliderEl.value = inputEl.value;
             updateSliderFill(inputEl.value);
@@ -262,8 +284,30 @@ const initSipCalculator = () => {
             let min = parseFloat(inputEl.min);
             let max = parseFloat(inputEl.max);
             
-            if(val < min) inputEl.value = min;
-            if(val > max) inputEl.value = max;
+            // Allow empty/invalid during typing without breaking the slider fill
+            if (isNaN(val)) {
+                sliderEl.value = min;
+                updateSliderFill(min);
+            } else {
+                // Don't snap the input text while typing, just cap the slider visually
+                let sliderVal = val;
+                if (sliderVal < min) sliderVal = min;
+                if (sliderVal > max) sliderVal = max;
+                
+                sliderEl.value = sliderVal;
+                updateSliderFill(sliderVal);
+            }
+            requestAnimationFrame(calculate);
+        });
+        
+        inputEl.addEventListener('blur', () => {
+            let val = parseFloat(inputEl.value);
+            let min = parseFloat(inputEl.min);
+            let max = parseFloat(inputEl.max);
+            
+            // Snap to bounds only when the user finishes typing
+            if (isNaN(val) || val < min) inputEl.value = min;
+            else if (val > max) inputEl.value = max;
             
             sliderEl.value = inputEl.value;
             updateSliderFill(inputEl.value);
