@@ -319,6 +319,16 @@ const initSipCalculator = () => {
 const initSimpleNavigation = () => {
     const navLinks = document.querySelectorAll('.sidebar-nav a:not(.privacy-btn)');
     
+    // Set active link based on URL hash on page load
+    const hash = window.location.hash;
+    if (hash) {
+        const hashLink = document.querySelector(`.sidebar-nav a[href$="${hash}"]`);
+        if (hashLink) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            hashLink.classList.add('active');
+        }
+    }
+    
     // Force instant update on click, purely driven by CSS classes
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
