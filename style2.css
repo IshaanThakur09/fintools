@@ -669,16 +669,25 @@ input[type="number"]::-webkit-inner-spin-button {
     perspective: 1000px;
 }
 
+.chart-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 60%);
+    z-index: 1;
+    pointer-events: none;
+}
+
 .chart-container canvas {
     position: relative;
     z-index: 2;
     transform: rotateX(45deg);
     transform-origin: center;
-    filter: 
-        drop-shadow(0 0 40px rgba(139, 92, 246, 0.6))
-        drop-shadow(0 0 80px rgba(139, 92, 246, 0.35))
-        drop-shadow(0 30px 35px rgba(0, 0, 0, 0.6));
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .chart-container:hover canvas {
