@@ -676,19 +676,19 @@ input[type="number"]::-webkit-inner-spin-button {
     transform: translate(-50%, -50%);
     width: 90%;
     height: 90%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(139, 92, 246, 0) 60%);
     z-index: 1;
     pointer-events: none;
 }
 
 .chart-container canvas {
-    position: relative;
-    z-index: 2;
-    transition: transform 0.3s ease;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .chart-container:hover canvas {
-    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 .chart-center-label {
