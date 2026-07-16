@@ -674,11 +674,13 @@ input[type="number"]::-webkit-inner-spin-button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
-    height: 90%;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(139, 92, 246, 0) 60%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 100px 80px rgba(139, 92, 246, 0.25);
     z-index: 1;
     pointer-events: none;
+    background: transparent;
 }
 
 .chart-container canvas {

@@ -247,8 +247,7 @@ const getChartConfig = (labels, data) => ({
                 }
             }
         }
-    },
-    plugins: [faux3DPlugin]
+    }
 });
 
 
