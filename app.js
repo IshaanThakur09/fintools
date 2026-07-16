@@ -35,37 +35,6 @@ const COLORS = {
     bgSecondary: 'rgba(255, 255, 255, 0.03)'
 };
 
-// Custom Tooltip Positioner that anchors to the exact outer edge of the pie slice and ALWAYS opens outward
-Chart.Tooltip.positioners.outerEdge = function(elements, eventPosition) {
-    if (!elements.length) return false;
-    
-    const chart = this.chart;
-    const element = elements[0].element; // The arc element
-    
-    // Calculate the center of the chart area
-    const centerX = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-    const centerY = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
-    
-    // Find the exact middle angle of the hovered slice
-    const angle = (element.startAngle + element.endAngle) / 2;
-    const outerRadius = element.outerRadius;
-    
-    // Anchor coordinates exactly on the outer edge of the ring
-    const anchorX = centerX + Math.cos(angle) * outerRadius;
-    const anchorY = centerY + Math.sin(angle) * outerRadius;
-    
-    // If the anchor is on the left side of the chart, draw the box to the left (xAlign: right)
-    // If the anchor is on the right side, draw the box to the right (xAlign: left)
-    const xAlign = Math.cos(angle) < 0 ? 'right' : 'left';
-    
-    return {
-        x: anchorX,
-        y: anchorY,
-        xAlign: xAlign,
-        yAlign: 'center'
-    };
-};
-
 // Standard Chart Config
 const getChartConfig = (labels, data) => ({
     type: 'doughnut',
@@ -103,7 +72,6 @@ const getChartConfig = (labels, data) => ({
                 display: false
             },
             tooltip: {
-                position: 'outerEdge',
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 titleColor: '#f8fafc',
                 bodyColor: '#e2e8f0',
