@@ -666,7 +666,6 @@ input[type="number"]::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    perspective: 1000px;
 }
 
 .chart-container::before {
@@ -685,13 +684,11 @@ input[type="number"]::-webkit-inner-spin-button {
 .chart-container canvas {
     position: relative;
     z-index: 2;
-    transform: rotateX(45deg);
-    transform-origin: center;
     transition: transform 0.3s ease;
 }
 
 .chart-container:hover canvas {
-    transform: rotateX(30deg);
+    transform: scale(1.05);
 }
 
 .chart-center-label {
