@@ -25,8 +25,9 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
     background-color: var(--bg-primary);
     color: var(--text-main);
     font-family: 'Inter', system-ui, sans-serif;
@@ -70,7 +71,7 @@ html, body {
     position: relative;
     z-index: 10;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,6 +235,21 @@ html, body {
     }
     
     .landing-header .logo {
-        font-size: 2.75rem;
+        font-size: 2.25rem;
+    }
+    
+    .landing-header p {
+        font-size: 1rem;
+    }
+    
+    .option-card {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 2rem 1.5rem;
+    }
+    
+    .landing-container {
+        padding: 4rem 1rem 2rem 1rem;
+        justify-content: flex-start;
     }
 }
