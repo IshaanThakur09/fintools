@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | FinTools</title>
+    <meta name="description" content="Privacy Policy for FinTools. Learn how we handle data and protect your privacy.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -14,53 +15,79 @@
             border: 1px solid var(--border-light);
             margin-bottom: 2rem;
         }
-        .privacy-content h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--accent); }
-        .privacy-content p { margin-bottom: 1rem; color: var(--text-muted); }
-        .privacy-content ul { margin-left: 2rem; margin-bottom: 1rem; color: var(--text-muted); }
-        .back-link { display: inline-block; margin-bottom: 2rem; color: var(--accent); text-decoration: none; font-weight: 500; }
-        .back-link:hover { text-decoration: underline; }
+        .privacy-content h2 { margin-top: 2rem; margin-bottom: 1rem; color: var(--primary-color); }
+        .privacy-content p, .privacy-content ul { margin-bottom: 1rem; color: var(--text-muted); line-height: 1.6; }
+        .privacy-content ul { margin-left: 2rem; }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <a href="index.html" style="text-decoration: none;"><h1 class="logo">Fin<span>Tools</span></h1></a>
-        </div>
-    </header>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header mobile-only" style="display: flex; justify-content: flex-end; align-items: center; padding-bottom: 1rem;">
+                <button class="sidebar-close-btn" aria-label="Close menu">✕</button>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-group">
+                    <h3 class="nav-group-title">Calculate</h3>
+                    <a href="index.html#emi">EMI Calculator</a>
+                    <a href="index.html#sip">SIP Calculator</a>
+                </div>
+                <div class="nav-group">
+                    <h3 class="nav-group-title">Learn</h3>
+                    <a href="learn.html#learn-emi">Understanding EMI</a>
+                    <a href="learn.html#learn-sip">Understanding SIP</a>
+                </div>
+            </nav>
+        </aside>
 
-    <main class="container">
-        <a href="index.html" class="back-link">← Back to Calculators</a>
-        
-        <div class="privacy-content">
-            <h1>Privacy Policy</h1>
-            <p>Last updated: July 2026</p>
+        <div class="content-wrapper">
+            <header class="top-header">
+                <div class="header-content">
+                    <button class="sidebar-open-btn" aria-label="Open menu">☰</button>
+                    <a href="index.html" style="text-decoration: none;"><h1 class="logo">Fin<span>Tools</span></h1></a>
+                </div>
+            </header>
+            
+            <div class="main-content">
+            <main class="container">
+                <div class="privacy-content">
+                    <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem; margin-top: 0;">Privacy Policy</h1>
+                    <p style="color: var(--text-muted); margin-bottom: 2.5rem;">Last updated: July 2026</p>
 
-            <h2>1. Information We Collect</h2>
-            <p>We do not collect any personal data when you use our calculators. All calculations are performed entirely on your device (client-side), and no financial data is transmitted to or stored on our servers.</p>
+                    <h2>1. Information We Collect</h2>
+                    <p>We do not collect any personal data when you use our calculators. All calculations are performed entirely on your device (client-side), and no financial data is transmitted to or stored on our servers.</p>
 
-            <h2>2. Cookies and Web Beacons</h2>
-            <p>Like any other website, FinTools uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
+                    <h2>2. Cookies and Web Beacons</h2>
+                    <p>Like any other website, FinTools uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.</p>
 
-            <h2>3. Google AdSense & DoubleClick DART Cookie</h2>
-            <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.</p>
-            <ul>
-                <li>Third party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
-                <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
-                <li>Users may opt out of personalized advertising by visiting <a href="https://myadcenter.google.com/" style="color: var(--accent);">Ads Settings</a>.</li>
-            </ul>
+                    <h2>3. Google AdSense & DoubleClick DART Cookie</h2>
+                    <p>Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to our site and other sites on the internet.</p>
+                    <ul>
+                        <li>Third party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.</li>
+                        <li>Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.</li>
+                        <li>Users may opt out of personalized advertising by visiting <a href="https://myadcenter.google.com/" style="color: var(--primary-color);">Ads Settings</a>.</li>
+                    </ul>
 
-            <h2>4. Third Party Privacy Policies</h2>
-            <p>FinTools's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.</p>
+                    <h2>4. Third Party Privacy Policies</h2>
+                    <p>FinTools's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.</p>
 
-            <h2>5. Consent</h2>
-            <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
-        </div>
-    </main>
+                    <h2>5. Consent</h2>
+                    <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
+                </div>
+            </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 FinTools. Premium Financial Calculators.</p>
-        </div>
-    </footer>
+            <footer>
+                <div class="container">
+                    <p>&copy; 2026 FinTools. Premium Financial Calculators.</p>
+                    <div class="footer-links" style="margin-top: 1rem;">
+                        <a href="privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
+                    </div>
+                </div>
+            </footer>
+            </div> <!-- End main-content -->
+        </div> <!-- End content-wrapper -->
+    </div> <!-- End app-layout -->
+
+    <script src="app.js"></script>
 </body>
 </html>
