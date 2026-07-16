@@ -35,19 +35,6 @@ const COLORS = {
     bgSecondary: 'rgba(255, 255, 255, 0.03)'
 };
 
-// Register custom tooltip positioner
-Chart.Tooltip.positioners.outside = function(elements, eventPosition) {
-    if (!elements.length) return false;
-    
-    const chart = this.chart;
-    
-    // Anchor to the left side of the chart area, but follow the cursor vertically
-    return {
-        x: chart.chartArea.left + 20,
-        y: eventPosition.y
-    };
-};
-
 // Standard Chart Config
 const getChartConfig = (labels, data) => ({
     type: 'doughnut',
@@ -85,9 +72,6 @@ const getChartConfig = (labels, data) => ({
                 display: false
             },
             tooltip: {
-                position: 'outside',
-                xAlign: 'left',
-                yAlign: 'center',
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 titleColor: '#f8fafc',
                 bodyColor: '#e2e8f0',
