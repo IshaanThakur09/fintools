@@ -354,21 +354,37 @@ const initNavigationObserver = () => {
         indicator.style.height = `${activeLink.offsetHeight}px`;
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        if (scrollLock) return; // Don't override if user just clicked
+    const visibleSections = new Set();
 
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                const id = entry.target.getAttribute('id');
-                const activeLink = document.querySelector(`.sidebar-nav a[href$="#${id}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                    updateIndicator(activeLink);
-                }
+                visibleSections.add(entry.target.getAttribute('id'));
+            } else {
+                visibleSections.delete(entry.target.getAttribute('id'));
             }
         });
-    }, { threshold: 0.3 }); // Trigger when 30% of the section is visible
+
+        if (scrollLock || visibleSections.size === 0) return;
+
+        // Find the first visible section in DOM order to be the active one
+        let activeId = null;
+        for (const section of sections) {
+            if (visibleSections.has(section.getAttribute('id'))) {
+                activeId = section.getAttribute('id');
+                break;
+            }
+        }
+
+        if (activeId) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            const activeLink = document.querySelector(`.sidebar-nav a[href$="#${activeId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+                updateIndicator(activeLink);
+            }
+        }
+    }, { threshold: 0.1 }); // Trigger when 10% visible to catch small scrolls
 
     sections.forEach(section => observer.observe(section));
 
