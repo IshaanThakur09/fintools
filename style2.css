@@ -27,7 +27,7 @@
 html {
     min-height: 100vh;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 * {
@@ -45,7 +45,7 @@ body {
     /* App shell body */
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .container {
@@ -68,26 +68,24 @@ body {
     content: '';
     position: fixed;
     border-radius: 50%;
-    filter: blur(140px);
     z-index: -1;
-    opacity: 0.6;
     pointer-events: none;
 }
 
 .app-layout::before {
-    background: rgba(179, 115, 255, 0.5);
-    width: 50vw;
-    height: 50vw;
-    top: -10vw;
-    left: -10vw;
+    background: radial-gradient(circle, rgba(179, 115, 255, 0.15) 0%, rgba(179, 115, 255, 0) 70%);
+    width: 60vw;
+    height: 60vw;
+    top: -15vw;
+    left: -15vw;
 }
 
 .app-layout::after {
-    background: rgba(255, 123, 229, 0.4);
-    width: 40vw;
-    height: 40vw;
-    bottom: -10vw;
-    right: -10vw;
+    background: radial-gradient(circle, rgba(255, 123, 229, 0.12) 0%, rgba(255, 123, 229, 0) 70%);
+    width: 50vw;
+    height: 50vw;
+    bottom: -15vw;
+    right: -15vw;
 }
 
 .content-wrapper {
