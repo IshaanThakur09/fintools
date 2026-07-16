@@ -63,8 +63,12 @@ Chart.Tooltip.positioners.outside = function(elements, eventPosition) {
 // Faux 3D Chart Plugin
 const faux3DPlugin = {
     id: 'faux3d',
-    beforeDraw: (chart) => {
+    afterDraw: (chart) => {
         const ctx = chart.ctx;
+
+        // DEBUG: draw a red square to confirm plugin is running
+        ctx.fillStyle = 'red';
+        ctx.fillRect(0, 0, 30, 30);
         const meta = chart.getDatasetMeta(0);
         
         // --- 1. Physics Engine for Hover Lift ---
