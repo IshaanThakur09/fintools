@@ -356,6 +356,14 @@ const initNavigationObserver = () => {
     }, { threshold: 0.3 }); // Trigger when 30% of the section is visible
 
     sections.forEach(section => observer.observe(section));
+
+    // Force instant update on click so it doesn't wait for scroll/observer
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
 };
 
 // --- Sidebar Toggle Logic ---
