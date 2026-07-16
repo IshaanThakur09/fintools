@@ -60,127 +60,18 @@ Chart.Tooltip.positioners.outside = function(elements, eventPosition) {
     };
 };
 
-// Faux 3D Chart Plugin
-const faux3DPlugin = {
-    id: 'faux3d',
-    beforeDraw: (chart) => {
-        const ctx = chart.ctx;
-        const meta = chart.getDatasetMeta(0);
-        
-        // --- 1. Physics Engine for Hover Lift ---
-        chart.fauxLifts = chart.fauxLifts || [0, 0];
-        const activeElements = chart.getActiveElements();
-        const hoveredIndex = activeElements.length > 0 ? activeElements[0].index : -1;
-        
-        const targetLifts = [0, 0];
-        if (hoveredIndex === 0) {
-            targetLifts[0] = 20;   // Hovered block rises 20px
-            targetLifts[1] = -10;  // Other block sinks 10px
-        } else if (hoveredIndex === 1) {
-            targetLifts[0] = -10;
-            targetLifts[1] = 20;
-        }
-        
-        chart.fauxLifts = targetLifts;
-
-        const baseDepth = 28;
-        
-        if (!meta || !meta.data || meta.data.length === 0 || meta.data[0].y === undefined) return;
-        
-        ctx.save();
-        
-        // 1. Calculate absolute Y bounds for all blocks
-        // Assuming all meta.data elements share the same center y
-        const bottomY = Math.floor(meta.data[0].y + baseDepth); 
-        let minTopY = bottomY;
-        const topYs = [];
-        
-        meta.data.forEach((element, index) => {
-            topYs[index] = Math.floor(element.y - chart.fauxLifts[index]);
-            if (topYs[index] < minTopY) minTopY = topYs[index];
-        });
-        
-        // 2. Draw true isometric 3D (Render slices from absolute bottom to absolute top)
-        for (let absY = bottomY; absY >= minTopY; absY--) {
-            meta.data.forEach((element, index) => {
-                // If this block exists at the current absolute Y slice
-                if (absY >= topYs[index] && absY <= bottomY) {
-                    const { x, y, startAngle, endAngle, innerRadius, outerRadius } = element;
-                    
-                    // --- Draw Wall Slice ---
-                    ctx.beginPath();
-                    ctx.arc(x, absY, outerRadius, startAngle, endAngle);
-                    ctx.arc(x, absY, innerRadius, endAngle, startAngle, true);
-                    ctx.closePath();
-                    
-                    ctx.fillStyle = index === 0 ? '#1a0545' : '#4a107a';
-                    ctx.fill();
-                    
-                    // --- If Top Layer, Draw Top Face & Highlights immediately so it Z-sorts properly ---
-                    if (absY === topYs[index]) {
-                        
-                        // Top Face
-                        ctx.beginPath();
-                        ctx.arc(x, absY, outerRadius, startAngle, endAngle);
-                        ctx.arc(x, absY, innerRadius, endAngle, startAngle, true);
-                        ctx.closePath();
-                        
-                        const gradient = ctx.createLinearGradient(0, y - outerRadius, 0, y + outerRadius);
-                        if (index === 0) {
-                            gradient.addColorStop(0, '#6366f1');
-                            gradient.addColorStop(1, '#4338ca');
-                        } else {
-                            gradient.addColorStop(0, '#d946ef');
-                            gradient.addColorStop(1, '#a855f7');
-                        }
-                        ctx.fillStyle = gradient;
-                        ctx.fill();
-                        
-                        // Specular Highlight
-                        const midRadius = (innerRadius + outerRadius) / 2;
-                        const midAngle = (startAngle + endAngle) / 2;
-                        const highlightX = x + Math.cos(midAngle) * midRadius * 0.3;
-                        const highlightY = absY - outerRadius * 0.4;
-                        
-                        const shine = ctx.createRadialGradient(
-                            highlightX, highlightY, 0,
-                            highlightX, highlightY, outerRadius * 1.2
-                        );
-                        shine.addColorStop(0, 'rgba(255, 255, 255, 0.6)');
-                        shine.addColorStop(0.3, 'rgba(255, 255, 255, 0.2)');
-                        shine.addColorStop(0.6, 'rgba(255, 255, 255, 0.05)');
-                        shine.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                        
-                        ctx.fillStyle = shine;
-                        ctx.fill();
-                        
-                        // Thin bright rim
-                        ctx.beginPath();
-                        ctx.arc(x, absY, outerRadius - 0.5, startAngle, endAngle);
-                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
-                        ctx.lineWidth = 1.5;
-                        ctx.stroke();
-                    }
-                }
-            });
-        }
-        
-        ctx.restore();
-    }
-};
-
-// Common Chart Config
+// Standard Chart Config
 const getChartConfig = (labels, data) => ({
     type: 'doughnut',
     data: {
         labels: labels,
         datasets: [{
             data: data,
-            backgroundColor: 'transparent', // Custom draw plugin handles rendering instead
+            backgroundColor: ['#8b5cf6', '#d946ef'],
             borderWidth: 0,
-            spacing: 0, 
-            borderRadius: 0,
-            hoverOffset: 0 // Disable 2D native expansion for 3D physical lift
+            spacing: 5, 
+            borderRadius: 8,
+            hoverOffset: 12
         }]
     },
     options: {
@@ -228,8 +119,7 @@ const getChartConfig = (labels, data) => ({
                 }
             }
         }
-    },
-    plugins: [faux3DPlugin]
+    }
 });
 
 
@@ -501,7 +391,7 @@ const buildCustomDropdowns = (calcEmi, calcSip) => {
         trigger.type = 'button';
         trigger.className = 'custom-dropdown-trigger';
         const selectedOption = select.options[select.selectedIndex];
-        trigger.innerHTML = `<span class="dd-text">${selectedOption.text}</span><span class="dd-arrow">Γû╝</span>`;
+        trigger.innerHTML = `<span class="dd-text">${selectedOption.text}</span><span class="dd-arrow">▼</span>`;
         
         // Create menu
         const menu = document.createElement('div');
