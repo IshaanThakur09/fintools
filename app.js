@@ -81,17 +81,7 @@ const faux3DPlugin = {
             targetLifts[1] = 20;
         }
         
-        let needsRedraw = false;
-        for (let i = 0; i < 2; i++) {
-            chart.fauxLifts[i] += (targetLifts[i] - chart.fauxLifts[i]) * 0.15;
-            if (Math.abs(chart.fauxLifts[i] - targetLifts[i]) > 0.1) needsRedraw = true;
-        }
-
-        // Loop animation until targets reached
-        if (needsRedraw) {
-            requestAnimationFrame(() => chart.render());
-        }
-
+        chart.fauxLifts = targetLifts;
         const baseDepth = 28;
         
         ctx.save();
@@ -195,11 +185,11 @@ const getChartConfig = (labels, data) => ({
         labels: labels,
         datasets: [{
             data: data,
-            backgroundColor: ['#8b5cf6', '#d946ef'],
+            backgroundColor: 'transparent', // Custom draw plugin handles rendering instead
             borderWidth: 0,
-            spacing: 2, 
-            borderRadius: 4,
-            hoverOffset: 15
+            spacing: 0, 
+            borderRadius: 0,
+            hoverOffset: 0 // Disable 2D native expansion for 3D physical lift
         }]
     },
     options: {
@@ -247,7 +237,8 @@ const getChartConfig = (labels, data) => ({
                 }
             }
         }
-    }
+    },
+    plugins: [faux3DPlugin]
 });
 
 
