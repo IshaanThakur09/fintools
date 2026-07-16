@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://free-financial-tools.netlify.app/sitemap.xml
+Sitemap: https://chorusplex.netlify.app/sitemap.xml
