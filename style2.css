@@ -665,12 +665,18 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .chart-container canvas {
-    display: block;
-    background-color: transparent;
+    position: relative;
+    z-index: 2;
+    transform: scaleY(0.65);
+    transform-origin: center;
+    filter: 
+        drop-shadow(0 0 40px rgba(139, 92, 246, 0.6))
+        drop-shadow(0 30px 35px rgba(0, 0, 0, 0.6));
+    transition: transform 0.3s ease;
 }
 
 .chart-container:hover canvas {
-    filter: brightness(1.1);
+    transform: scaleY(0.75);
 }
 
 .chart-center-label {
