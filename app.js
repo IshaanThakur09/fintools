@@ -339,18 +339,18 @@ const initNavigationObserver = () => {
     
     if(sections.length === 0) return;
 
+    let scrollLock = false;
+    let scrollLockTimeout = null;
+
     const observer = new IntersectionObserver((entries) => {
+        if (scrollLock) return; // Don't override if user just clicked
+
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Remove active from all
                 navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active to the current section (using $= to match ends with #id since hrefs are absolute now)
                 const id = entry.target.getAttribute('id');
                 const activeLink = document.querySelector(`.sidebar-nav a[href$="#${id}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
+                if (activeLink) activeLink.classList.add('active');
             }
         });
     }, { threshold: 0.3 }); // Trigger when 30% of the section is visible
@@ -362,6 +362,11 @@ const initNavigationObserver = () => {
         link.addEventListener('click', function() {
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
+            
+            // Lock the observer temporarily while smooth scrolling happens
+            scrollLock = true;
+            if (scrollLockTimeout) clearTimeout(scrollLockTimeout);
+            scrollLockTimeout = setTimeout(() => { scrollLock = false; }, 800);
         });
     });
 };
