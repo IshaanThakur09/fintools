@@ -220,9 +220,10 @@ body {
     background-color: var(--bg-tertiary);
 }
 
-@keyframes activePulseInvert {
-    0% { transform: scale(1.05); background-color: var(--accent); border-color: var(--accent); box-shadow: 0 0 30px rgba(159, 91, 255, 0.6); }
-    50% { transform: scale(0.95); background-color: transparent; border-color: transparent; box-shadow: 0 0 0px transparent; }
+@keyframes plateauPulse {
+    0% { transform: scale(1); background-color: transparent; border-color: transparent; box-shadow: 0 0 0px transparent; }
+    30% { transform: scale(1.04); background-color: rgba(159, 91, 255, 0.25); border-color: rgba(159, 91, 255, 0.5); box-shadow: 0 0 25px rgba(159, 91, 255, 0.3); }
+    70% { transform: scale(1.04); background-color: rgba(159, 91, 255, 0.25); border-color: rgba(159, 91, 255, 0.5); box-shadow: 0 0 25px rgba(159, 91, 255, 0.3); }
     100% { transform: scale(1); background-color: var(--accent-light); border-color: rgba(159, 91, 255, 0.2); box-shadow: 0 0 15px rgba(159, 91, 255, 0.15); }
 }
 
@@ -238,7 +239,7 @@ body {
     background-color: var(--accent-light);
     border-color: rgba(159, 91, 255, 0.2);
     box-shadow: 0 0 15px rgba(159, 91, 255, 0.15);
-    animation: activePulseInvert 0.4s cubic-bezier(0.8, 0, 0.8, 1) forwards;
+    animation: plateauPulse 0.6s ease-in-out forwards;
 }
 
 .privacy-btn {
