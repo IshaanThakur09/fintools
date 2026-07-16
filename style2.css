@@ -676,7 +676,7 @@ input[type="number"]::-webkit-inner-spin-button {
     height: 10px;
     border-radius: 50%;
     box-shadow: 0 0 100px 80px rgba(139, 92, 246, 0.25);
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
     background: transparent;
 }
@@ -684,13 +684,10 @@ input[type="number"]::-webkit-inner-spin-button {
 .chart-container canvas {
     display: block;
     background-color: transparent;
-    transform: scaleY(0.7);
-    transform-origin: center;
-    transition: transform 0.2s ease;
 }
 
 .chart-container:hover canvas {
-    transform: scaleY(0.75) scaleX(1.05);
+    filter: brightness(1.08);
 }
 
 .chart-center-label {
