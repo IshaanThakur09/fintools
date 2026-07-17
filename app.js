@@ -498,6 +498,30 @@ const initApp = () => {
     });
 
     buildCustomDropdowns(calcEmi, calcSip);
+
+    // ScrollSpy for sidebar highlights
+    const sections = document.querySelectorAll('.calculator-section, .learn-section');
+    const navLinks = document.querySelectorAll('.sidebar-nav a[href*="#"]');
+    
+    if (sections.length > 0) {
+        const scrollSpyCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    // Remove active from all
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    // Add active to the one matching the current section ID
+                    const activeLink = document.querySelector(`.sidebar-nav a[href$="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        };
+        // Trigger when the section reaches roughly the center of the viewport
+        const scrollSpyObserver = new IntersectionObserver(scrollSpyCallback, { rootMargin: '-40% 0px -40% 0px' });
+        sections.forEach(sec => scrollSpyObserver.observe(sec));
+    }
 };
 
 if (document.readyState === 'loading') {
