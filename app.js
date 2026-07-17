@@ -459,7 +459,7 @@ const buildCustomDropdowns = (calcEmi, calcSip) => {
 };
 
 // --- Initialization ---
-document.addEventListener('DOMContentLoaded', () => {
+const initApp = () => {
     const calcEmi = initEmiCalculator();
     const calcSip = initSipCalculator();
     initSimpleNavigation();
@@ -498,4 +498,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     buildCustomDropdowns(calcEmi, calcSip);
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
