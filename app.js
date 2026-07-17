@@ -35,6 +35,21 @@ const COLORS = {
     bgSecondary: 'rgba(255, 255, 255, 0.03)'
 };
 
+// Register custom outward tooltip positioner
+Chart.Tooltip.positioners.outward = function(elements, eventPosition) {
+    if (!elements.length) return false;
+    const chart = this.chart;
+    const centerX = chart.width / 2;
+    // If cursor is on the left half, point caret to the right (forces box to the left)
+    // If cursor is on the right half, point caret to the left (forces box to the right)
+    return {
+        x: eventPosition.x,
+        y: eventPosition.y,
+        xAlign: eventPosition.x < centerX ? 'right' : 'left',
+        yAlign: 'center'
+    };
+};
+
 // Standard Chart Config
 const getChartConfig = (labels, data) => ({
     type: 'doughnut',
@@ -72,6 +87,7 @@ const getChartConfig = (labels, data) => ({
                 display: false
             },
             tooltip: {
+                position: 'outward',
                 backgroundColor: 'rgba(15, 23, 42, 0.9)',
                 titleColor: '#f8fafc',
                 bodyColor: '#e2e8f0',
