@@ -149,7 +149,7 @@ const initEmiCalculator = () => {
 
         // Update Chart
         emiChart.data.datasets[0].data = [p, totalInterest];
-        emiChart.update();
+        emiChart.update('none');
     };
 
     // Sync Input & Slider
@@ -267,7 +267,7 @@ const initSipCalculator = () => {
 
         // Update Chart
         sipChart.data.datasets[0].data = [totalInvested, estReturns];
-        sipChart.update();
+        sipChart.update('none');
     };
 
     // Sync Input & Slider
