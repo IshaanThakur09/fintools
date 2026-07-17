@@ -1,0 +1,67 @@
+{
+  "project_name": "Chorusplex Financial Calculators",
+  "tech_stack": {
+    "frontend": ["HTML5", "CSS3", "Vanilla JavaScript"],
+    "libraries": ["Chart.js (via CDN)"],
+    "build_tool": "Vite",
+    "hosting": "Vercel"
+  },
+  "architecture": {
+    "type": "Multi-Page Application (MPA)",
+    "routing": "Vercel Clean URLs (strips .html extensions)",
+    "module_system": "ES Modules (<script type=\"module\">)"
+  },
+  "pages": [
+    {
+      "path": "/",
+      "source_file": "index.html",
+      "description": "Landing page with animated floating orbs and navigation cards."
+    },
+    {
+      "path": "/calculators",
+      "source_file": "calculators.html",
+      "description": "Main application page housing the EMI and SIP calculators. Uses Chart.js for data visualization.",
+      "features": [
+        "EMI Calculation",
+        "SIP Calculation",
+        "Dynamic Currency Selector",
+        "Interactive Sliders synchronized with inputs",
+        "Interactive Doughnut Charts with custom outward tooltips"
+      ]
+    },
+    {
+      "path": "/learn",
+      "source_file": "learn.html",
+      "description": "Educational hub explaining the mathematical concepts of EMI and SIP."
+    },
+    {
+      "path": "/privacy",
+      "source_file": "privacy.html",
+      "description": "Standard privacy policy page."
+    }
+  ],
+  "core_assets": [
+    {
+      "file": "app.js",
+      "purpose": "Global Javascript logic. Calculates EMI/SIP formulas, initializes and dynamically updates Chart.js instances, handles custom tooltip positioning, manages IntersectionObserver for CSS scroll reveal animations, and builds custom currency dropdowns. Executed as an ES module after document ready state checks."
+    },
+    {
+      "file": "style2.css",
+      "purpose": "Main stylesheet for the calculators and learn pages. Implements a premium glassmorphism UI, CSS variables for theming, responsive grid layouts, and hardware-accelerated hover transitions."
+    },
+    {
+      "file": "landing.css",
+      "purpose": "Specific styling for the landing page including complex keyframe animations for the floating background orbs."
+    }
+  ],
+  "build_config": [
+    {
+      "file": "vite.config.js",
+      "purpose": "Configures Vite for the MPA build, specifying index, calculators, learn, and privacy HTML files as rollup inputs so Vite bundles and minifies the CSS and JS correctly."
+    },
+    {
+      "file": "vercel.json",
+      "purpose": "Vercel deployment configuration. Enables `cleanUrls` to strip .html extensions for professional routing."
+    }
+  ]
+}
